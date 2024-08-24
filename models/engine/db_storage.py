@@ -11,6 +11,7 @@ from models.state import State
 from models.city import City
 from models.amenity import Amenity
 from models.review import Review
+import os
 
 
 class DBStorage:
@@ -52,7 +53,7 @@ class DBStorage:
         """Reload the current database session"""
         session_factory = sessionmaker(bind=self.__engine, expire_on_commit=False)
         Session = scoped_session(session_factory)
-        self.__session = Session
+        self.__session = Session()
 
     def close(self):
         """Remove the current session"""
